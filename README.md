@@ -8,8 +8,8 @@ This repository is intended just for supporting & helping me :eyes: during my eC
  **Section: System Security**
 * [x] Module 1 : Architecture Fundamentals
 * [x] Module 2 : Assemblers, Debuggers and Tools Arsenal
-* [ ] Module 3 : Buffer Overflow   :pushpin:  :boom:
-* [ ] Module 4 : Shellcoding
+* [x] Module 3 : Buffer Overflow  
+* [ ] Module 4 : Shellcoding  :pushpin:  :boom:
 * [ ] Module 5 : Cryptography and Password Cracking
 * [ ] Module 6 : Malware
 
