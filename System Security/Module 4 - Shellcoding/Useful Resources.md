@@ -10,3 +10,4 @@
 ## Tools  :wrench:
 - [Shellen](https://github.com/merrychap/shellen)
 - [Metasm](https://github.com/jjyg/metasm)
+- [Online x86 / x64 Assembler and Disassembler](https://defuse.ca/online-x86-assembler.htm#disassembly2)
