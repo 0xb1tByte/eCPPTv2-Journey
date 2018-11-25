@@ -9,3 +9,4 @@
 
 ## Tools  :wrench:
 - [Shellen](https://github.com/merrychap/shellen)
+- [Metasm](https://github.com/jjyg/metasm)
