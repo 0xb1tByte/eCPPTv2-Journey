@@ -9,8 +9,8 @@ This repository is intended just for supporting & helping me :eyes: during my eC
 * [x] Module 1 : Architecture Fundamentals
 * [x] Module 2 : Assemblers, Debuggers and Tools Arsenal
 * [x] Module 3 : Buffer Overflow  
-* [ ] Module 4 : Shellcoding  :pushpin:  :boom:
-* [ ] Module 5 : Cryptography and Password Cracking
+* [x] Module 4 : Shellcoding  
+* [ ] Module 5 : Cryptography and Password Cracking :pushpin:  :boom:
 * [ ] Module 6 : Malware
 
 
