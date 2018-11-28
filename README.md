@@ -11,12 +11,12 @@ This repository is intended just for supporting & helping me :eyes: during my eC
 * [x] Module 3 : Buffer Overflow  
 * [x] Module 4 : Shellcoding  
 * [x] Module 5 : Cryptography and Password Cracking 
-* [ ] Module 6 : Malware :pushpin:
+* [x] Module 6 : Malware 
 
 
  **Section: Network Security**
 * [x] Module 1 : Information Gathering
-* [ ] Module 2 : Scanning
+* [ ] Module 2 : Scanning :pushpin:
 * [ ] Module 3 : Enumeration
 * [ ] Module 4 : Sniffing & MITM
 * [ ] Module 5 : Vulnerability Assessment & Exploitation
