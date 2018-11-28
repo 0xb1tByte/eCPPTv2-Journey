@@ -6,3 +6,6 @@
 - [The Buffer Overflow hands-on tutorial using C programming language)](https://www.tenouk.com/cncplusplusbufferoverflow.html)
 - [Win32 Exploitation with mona.py – Getting Set Up (Part I)](https://wmsmartt.wordpress.com/2011/11/08/win32-exploitation-with-mona-py-getting-set-up-part-i/)
 - [Win32 Exploitation with mona.py – Part II (Configuration and Basics)](https://wmsmartt.wordpress.com/2011/11/09/win32-exploitation-with-mona-py-part-ii-configuration-and-basics/)
+
+## Courses :arrow_forward:
+- [CNIT 127: Exploit Development](https://samsclass.info/127/127_F18.shtml)
