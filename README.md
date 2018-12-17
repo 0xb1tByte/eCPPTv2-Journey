@@ -18,8 +18,8 @@ This repository is intended just for supporting & helping me :eyes: during my eC
 * [x] Module 1 : Information Gathering
 * [x] Module 2 : Scanning 
 * [x] Module 3 : Enumeration
-* [ ] Module 4 : Sniffing & MITM :pushpin:
-* [ ] Module 5 : Vulnerability Assessment & Exploitation
+* [x] Module 4 : Sniffing & MITM 
+* [ ] Module 5 : Vulnerability Assessment & Exploitation :pushpin:
 * [ ] Module 6 : Post Exploitation
 * [ ] Module 7 : Anonymity
 * [ ] Module 8 : Social Engineering
