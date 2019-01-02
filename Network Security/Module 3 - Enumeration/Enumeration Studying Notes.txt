@@ -1,0 +1,278 @@
+			   Enumeration
+
+#=====================================================================#
+
+######################################################################
+####################### ____ 1 - MIND MAP ____ #######################
+######################################################################
+
+- NetBIOS
+	[+] sharing printers and files
+	[+] remote procedure calls
+	[+] exchange messages
+	[+] much more ... 
+	[^] These information may reveal additional information such as:
+		[++] computer name
+		[++] user names
+		[++] domains
+		[++] printers
+		[++] available shares 
+	[+] PCs communicate either by : 
+		[++] esablishing a session 
+		[++] datagrams 
+		[^^] to do so, the following TCP & UDP ports are used :
+			- UDP 137 ==> Name Services 
+					==> Translate NetBIOS name to IP
+			- UDP 138 ==> Datagram Services
+			- TCP 139 ==> Session Services
+	[+] NetBIOS Names (NBNS): 
+		[++] 16 Bytes
+		[++] Dynamically registered
+		[++] unique names OR groups names
+		[++] the first 15th characters can be specified by the user
+		[++] the 16th character is used to indicate the resource type 
+		[++] the 16th character takes values from 00 to FF
+		[++] NetBIOS Suffix Definitions:https://msdn.microsoft.com/en-us/library/cc224454.aspx
+		[++] the service (on OS) that maps NetBIOS names to IP is called: Windows Internet Name Service (WINS)
+	[+] Datagram Service (NBDS) : 
+		[++] allows the sending and receiving of the datagram messages to and from :
+			==> a specific NetBIOS name
+			==> broadcast the datagram to all NetBIOS names
+		[++] these comminications are limited in terms of message size 
+		[++] there is no error detection during sending (since it's use UDP)
+		[++] communications happen without the need for a session to be established 
+	[+] NetBIOS Session Service (NBSS) :
+		[++] it allows two names to establish a connection in order to exchange data 
+		[++] once the session has been established, the two workstations use the Server 
+	[+] Server Message Block (SMB)
+		[++] also known as Common Internet File System (CIFS)	
+		[++] operates at Application layer
+		[++] Lets you shares files, disks, directories, printers
+		[++] provides an authenticated inter-process communication mechanis (IPC)
+		[++] SMB run on TCP-445
+	[+] Null Session 
+		[++] rely on Common Internet File System (CIFS) and Server Message Blcok (SMB) API
+		[++] a malicous user can establish a connection to a Windows system without providing any username or password
+		[++] in order for the attack to work, the connection must be established to the administrative share named IPC (Inter Process Communication)
+
+- SNMP  
+	[+] it's used for exchanging management information between network devices
+		[++] may used to configure a router or simply check its status 
+		[++] in SNMP there is a manager & agents
+		[++] the agents:
+			[+++] waits for commands from the manager 
+			[+++] send critical messages (trap) to manager 
+		[++] manager is usually a system administrator 
+	[+] SNMP Protocol consist of Header and a PDU (Protocol Data Units)
+	[+] There 4 types of SNMP commands :
+		[++] Read ===> used to monitor devices
+		[++] Write ==> used to configure devices and change settings
+		[++] Trap ===> enable an agent to notify the management station of significant events
+		[++] Traversal Operations ==> used to determinw what variables a certain device supports
+	[+] SNMP V1 & V2 are vulnerables (Clear Text Protocol)
+	[+] SNMP V3 uses encryption, but it stills susceptibl to attack like brute-force
+	[+] SNMP recieves messages on UDP (161)
+	[+] SNMP recieves trap messages on UDP (162)
+	[+] SNMP Commands:
+		[++] Get 
+		[++] GetNext
+		[++] Set
+		[++] Trap
+	[+] Community Strings 
+		[++] Private Community string ==> write
+		[++] Public Community string ===> read 
+	[+] MIBs (Management Information Base)
+		[++] DataBase of properties of managed object on the network manager
+			[+++] each object of this DB has number and name 
+			[+++] OID : the complete path, from top of the DB down to the object 
+				[++++] all OID's will start with 1.3.6.1
+				[++++] the OID has address such as : 1.3.6.1.4.1.140.305
+	
+	[+] Attacks against SNMP
+		[++] Flooding
+		[++] Community
+		[++] Brute-force
+	[+] to obtain a community string 
+		[++] sniff the network traffic (in case SNMP V1 & V2)
+		[++] Dictionary Attack 
+		[++] Read access is enough to extract information
+#=====================================================================#
+
+
+######################################################################
+######################## ____ 1 - TOOLS ____ #########################
+######################################################################
+
+## NetBIOS :	
+
+	## 1 - nbtstat (Windows):
+	[+] is a tool developed to trubleshoot NetBIOS name resolution problems
+
+	## nbtstat Commands : 
+	[+] display the NetBIOS names on our machine 
+	nbtstat -n
+
+	[+] display the contents of the local computer (our machine) NetBIOS name cache
+	nbtstat -c
+
+	[+] display the NetBIOS name table of the remote computer (using computer name = CORP07)
+	nbtstat -a CORP07
+
+	[+] display the NetBIOS name table of the remote computer (using IP = 10.0.0.99)
+	nbtstat -A 10.0.0.99
+
+--------------------------------------------------------------------
+	
+	## 2 - nbtscan (Linux)
+	[+] this tool the same as nbtscan but for linux 
+
+	[+] display the NetBIOS name table of the remote computer
+	nbtscan -v [targetIP/or Subnets]
+
+	
+
+--------------------------------------------------------------------
+
+	## 3 - net (on windows)
+	[+] the net command offers many features such as:
+			==> the ability to update user account, 
+			==> display, view and modify services, 
+			==> connect computers to shared resources
+	[+] " net view" command 
+		[++] net view allow us to list domains, computers, resources shared by computer in network
+		[++] Usage : 
+			net view [targetIP]
+
+	[+] "net use" command 
+		[++] can be used to connect or disconnect a computer from a shared resources
+		[++] this means that we can connect our computer to the remote shared folder
+		[++] for example, if want to connect to C resource, we can use this command
+ 			net use K: \\192.168.252.128\C
+		[++] the "K" is a drive we add it to our machine 
+		[++] it's like we copy "C"'s folders to drive in our machine wich is "K"
+		[++] test if a machine is vulnerable to null session
+			net use \\192.168.99.120\IPC$ "" /u: ""
+				[+++] IPC$ ==> establish a connection to this hidden share
+				[+++] "" ==> null password
+				[+++] /u:"" ==> anonymous username	
+		[++] once we have a connection, we can use other tools to gather info from the remote machine 
+
+
+--------------------------------------------------------------------
+
+	## 4 - smbclient (on Linux)
+	[+] same as "net use"
+	[+] ftp-like client to access SMB/CIFS resources on servers
+	[+] if we want to list all the shares of specific computer 
+		smbclient -L [TargetIP]
+	[+] smbclient may shows hidden shares such as IPC$, C$ , ADMIN$	
+	[+] the "$" at the end denote an "hidden shares"
+	[+] IPC$ 
+		[++] used for inter-process communications
+		[++] can be used to leverage null session attack 
+
+
+
+--------------------------------------------------------------------
+
+	## 5 - mount (on Linux)
+	[+] if we want to navigate the target shares, we can use "mount" as alternative to "net use"
+	[+] for example if want to navigate to "C"
+		sudo mount.cifs //192.168.252.128/C /media/K_share user==,pass==
+	[+] "K_share" is the folder that we created to copy "C"'s folders to it
+
+--------------------------------------------------------------------
+	
+	## 6 - winfingerprint (on windows)
+		[+] GUI tool 
+
+
+--------------------------------------------------------------------
+
+
+	## 7 - wininfo (on windows)
+		[+] simple enum tool for NetBIOS that display all info through null sessions
+		[+] Usage : wininfo [targetIP] -n 
+			[++] -n ==> for null session 
+	
+
+--------------------------------------------------------------------
+	
+	## 8 - DumpSec (on windows)
+		[+] GUI tool 
+
+--------------------------------------------------------------------
+	
+	## 9 - enum4linux (on Linux)
+		[+] this tool is wrapper around : rpcclient,net, nmbblockup, smbclient
+		[+] enum4linux return :
+			[++] target information
+			[++] workgroup/ domain / printer info
+			[++] domain SID / password policy / groups/ user SID
+			[++] OS info / users / share enumeration 
+		[+] Usage : enum4linux [targetIP] 
+
+
+--------------------------------------------------------------------
+	
+	## 10 - rpcclient (on Linux)
+		[+] a tool can execute Microsoft RPC (remote procedure call) funcionalities
+		[+] in order to use it we must establish a connection to the remote machine
+		[+] Usage (conncet) : rpcclient -N -U "" [TargetIP]
+			[++] -N =====> instruct rpcclient not to ask for password
+			[++] -U "" ==> sets the network username (none in this case)
+		[+] once we connect to the machine , we can use rpc commands :
+			[++] enumdomusers ==> retrieve the users available on the machine 
+			[++] srvinfo =======> show information about the server 
+
+
+
+--------------------------------------------------------------------
+
+## SNMP :
+		
+	## 1 - snmpwalk (on Linux)	
+		[+] this tool uses "GETNEXT" request
+		[+] knowing the OID of machine will be useful during using this tool
+		[+] Usage : snmpwalk -v 2c 192.168.102.149 -c public 
+			[++] -v ==> SNMP verstion, use version 2c
+			[++] -c ==> community string, use public 
+		[+] we can check the value of OID with this tool
+			[++] example : snmpwalk -v -2c -c public 192.168.1.2 system.sysContact.0
+				[++] OID ==> system.sysContact.0
+		[+] if we want to list the software installed on machine, we can specify this OID
+			[++] hrSWInstalledName
+			[++] example : snmpwalk -v 2c 192.168.102.149 -c public hrSWInstalledName
+
+--------------------------------------------------------------------
+
+	## 2 - snmpset (on Linux)
+		[+] this tool uses "SET" request
+			[++] The "SET" allow either manager or agent to set object attributes 
+		[+] Arguments to pass to this command:
+			[++] one or more OID  
+			[++] type (string,integer..etc)
+			[++] value 
+		[+] to change the value of given OID 
+			[++] example : snmpset -v -2c -c public 192.168.1.2 system.sysContact.0 s new@els.com
+				[+++] OID ==========> system.sysContact.0
+				[+++] s ============> STRING type
+				[+++] new@els.com ==> new value for the entity
+				[+++] -v ==> SNMP verstion, use version 2c
+				[+++] -c ==> community string, use public
+
+
+--------------------------------------------------------------------
+
+	## 3 - NMAP SNMP script
+		[+] we can list the scripts at 
+			[++] location : /usr/share/nmap/scripts	
+			[++] command to list therm : ls -l | grep -i snmp
+			[++] Usage : nmap -sU -p 161 --script=[scriptName] [TargetIP]
+			[++] example of scripts : 
+				[+++] snmp-win32-services ==> info gathering
+				[+++] snmp-brute 
+					==> tries to brute community strings	
+					==> we can use the default worlist, or use our	
+
+
