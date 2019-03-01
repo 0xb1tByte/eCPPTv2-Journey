@@ -1,0 +1,211 @@
+
+	#################################
+	"MIND MAP"
+	├── Detect Live Hosts and Ports	
+	├── Service and OS Detection
+	└── Firewall/IDS Evasion
+	#################################
+
+----------------------------
+Detect Live Hosts and Ports:
+----------------------------
+│ #_Tool:hping3_#	
+│ 	# FLAGS 
+│ 	flags=RA ===> port is closed 
+│ 	flags=SA ===> port is open
+│ 
+│	#############
+│ 	# IDLE scan #
+│ 	#############
+│ 	│ [1] 
+│ 	│ "Before running a command to find a zombie we need to find an open port, we can use nmap in this step" 
+│ 	│ 
+│ 	│ [2]
+│ 	│ "Find a zombie" 
+│ 	│ # -r ==> tells the tool to display ID increments instead of the actual ID value
+│ 	│ # -p ==> for port 
+│ 	│ hping3 -S -r -p [TargetPort] [TargetIP]
+│ 	│ 
+│ 	│ [3]
+│ 	│ "Run the command" 
+│ 	│ # - a ==> spoof zombie source address
+│ 	│ # - S ==> SYN flag enabled
+│ 	│ hping3 -a [ZombieIP] -S -p [TargetPort] [TargetIP]
+│ 	│ 
+│ 	│ [4]
+│ 	│ "Monitor the Zombie ID again" 
+│ 	│ "If the ID value increment by +2, we can deduce that the [TargetPort] on [TargetIP] is open" 
+│ 	#######
+│ 	# END #
+│ 	#######
+│ 
+│ #_Tool:nmap_#
+│ 	# TCP scan (3-way handshake)	
+│ 	nmap -sT [TargetIP]
+│
+│ 	# TCP SYN scan (half-open) 	
+│ 	nmap -sS [TargetIP]
+│
+│ 	# Scan UDP ports
+│ 	nmap -sU [TargetIP]
+│
+│ 	#############
+│ 	# IDLE scan #
+│ 	#############
+│	├──────	#################
+│	│	#1 - FAST METHOD:
+│	│	#################
+│	│	│ "Check the zombie by using NSE script"
+│	│	│ sudo nmap --script ipidseq [ZombieIP] -p [TargetPort]
+│	│
+│	├────── ###################
+│	│	#2 - MANUAL METHOD:
+│	│	###################   
+│	│	│ [1] 
+│	│	│ "Check if the target is vulnarable to be a zombie," 
+│	│ 	│ "If the (IP ID Sequence Generation) is (incremental) then the target is vulnerable" 
+│	│	│ # For example, after scanning we will get this line
+│	│	│ ## IP ID Sequence Generation: Incremental ##
+│	│	│ nmap -O -v [ZombieIP]
+│	│	│ 
+│	│	│ [2]
+│	│	│ "Starting the scan with -sI switch"
+│	│	│ # Scanning common ports
+│	│	│ nmap -Pn -sI [ZombieIP]:[OpenPortOnZombie] [TargetIP]  -v
+│	│	│ # Scanning some ports
+│	│	│ nmap -Pn -sI [zombieIP]:[OpenPortOnZombie] [TargetIP] -p [TargetPort] -v
+│	│	│ # Scanning all ports 
+│	│	│ nmap -Pn -sI [zombieIP]:[openPort] [TargetIP] -p- -v
+│	#######
+│ 	# END #
+│ 	#######	
+	
+	
+	
+-------------------------
+Service and OS Detection:
+-------------------------
+├─────	--------------------
+│	1 - Banner Grabbing:
+│	-------------------- 
+│ 	│ "Downside of Banner Grabbing : if the admin edits the defualt banner, we will get a fake response"
+│	│
+│	│ #_Tool:telnet_# 
+│	│ 	telnet [TargetIP] [TargetPort] 	
+│	│ 
+│	│ #_Tool:ncat_# 
+│	│ 	ncat [TargetIP] [TargetPort]	
+│	│ 
+│	│ #_Tool:nc_#  
+│	│ 	nc [TargetIP] [TargetPort]		
+│
+│
+├─────	--------------------- 
+│	2 - Probing Services:
+│	--------------------- 
+│	│ #_Tool:nmap_#
+│	│ 	nmap -sV [TargetIP]
+│	
+│
+└──────	---------------------- 
+	3 - OS FingerPrinting:
+	---------------------- 
+	│ #_Tool:nmap_# 
+	│ 	# Active OS fingerprinting   
+	│ 	nmap -O [TargetIP]
+	│
+	│ #_Tool:p0f_# 
+	│ 	# Passive OS fingerprinting 
+	│ 	p0f -i [InterfaceName] 
+
+
+	
+---------------------
+Firewall/IDS Evasion:
+---------------------
+├─────	------------------
+│	1 - Fragmentation:
+│	------------------ 
+│	│ "It's the process of splitting a single packet into smaller ones"
+│	│ 
+│	│ #_Tool:nmap_# 
+│	│ 	"NOTE: Fragmentation on nmap not work with -sT & sV switches"
+│	│ 	nmap -sS -f [TargetIP]
+│	│ 
+│	│ 	# Using --mtu switch,  mtu most be multiples of 8
+│	│ 	nmap --mtu [mtuNumber] [TargetIP] -p [TargetPort]
+│ 
+│ 
+├─────	----------- 
+│	2 - Decoys:
+│	----------- 
+│	│ "The aim of using Decoys is to add a noise to the IDS Logs by sending scans from spoofed IPs"
+│	│ "your IP will appear in the IDS's Alert List however, it will be among all the decoys IPs" 
+│	│	
+│	│ #_Tool:nmap_#
+│	│ 	"NOTE: We can't use -D (decoy) with -sT & -sV"
+│	│ 	"NOTE: If we do not specify the ME, nmap will put our IP in a random position"
+│	│ 	# Manually specify the IP addresses of the decoys: 
+│	│ 	nmap -sS -D [DecoyIP#1],[DecoyIP#2] .. [DecoyIP#N], ME [TargetIP]
+│	│ 
+│	│ 	# Generates a random number of decoys: 
+│	│ 	nmap -D RND:[Number] [TargetIP] 
+│
+├─────	----------- 
+│	3 - Timing:
+│	----------- 
+│	│ "The only purpose here is to slow down the scan in order to blend with other traffic on the logs of firewall/IDS"
+│	│ "we can define the interval between two scan probes"
+│	│ 
+│	│ #_Tool:nmap_#
+│	│ 	# we can use -T switch on nmap 
+│	│ 	nmap -sS -T[0-5] [TargetIP] 
+│	│ 	-T0 ==> paranoid == 5 min
+│	│ 	-T1 ==> Sneaky == 15 sec
+│	│ 	-T2 ==> Polite == 0.4 sec
+│	│ 	-T3 ==> Normal == defualt
+│	│ 	-T4 ==> Aggressive == 10 millisec
+│	│ 	-T5 ==> Insane == 5 millisec  
+│	
+│
+├─────	----------------- 
+│	4 - Source Ports:
+│	----------------- 
+│	│ "a firewall may allow only the traffic coming from specific ports, such as 53"
+│	│ "we can then simply change our source port in order to bypass this resriction"
+│	│  
+│	│ #_Tool:nmap_# 
+│	│ 	# using --source-port or -g switches  
+│	│ 	nmap -sS --source-port [TargetPort] [TargetIP]	
+│	│ 	# or
+│	│ 	nmap -sS -g [TargetPort] [TargetIP]
+│	│ 
+│	│ #_Tool:hping3_#  
+│	│ 	hping3 -S -s [TargetPort] [TargetIP]│	
+│	
+│
+├─────	------------------------------ 
+│	5 - add random data to header:
+│	------------------------------ 
+│	│ #_Tool:nmap_#  
+│	│ 	nmap -sS --data-length 10 -p [TargetPort] [TargetIP]
+│	│ 
+│	│ #_Tool:hping3_# 
+│	│ 	hping3 -S -p [TargetPort] --data 24  [TargetIP]
+│
+│
+├─────	---------------------- 
+│	6 - Spoof mac address:
+│	---------------------- 
+│	│ #_Tool:nmap_#   
+│	│ 	nmap --spoof-mac  0  [TargetIP] -p [TargetPort] --disable-arp-ping -Pn -n
+│
+│
+└────── ---------------------------- 
+	7 - Spoof Source IP address: 
+	---------------------------- 
+	│ #_Tool:nmap_#  
+	│ 	nmap  -S [SpoofedIP] [TargetIP] 
+	│
+	│ #_Tool:hping3_# 
+	│ 	hping3 --rand-source -S -p [TargetPort] [TargetIP] -c 3 
