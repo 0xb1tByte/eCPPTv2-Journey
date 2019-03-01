@@ -7,3 +7,12 @@ The only requirement to use these cheatsheets is [cheat](https://github.com/chea
 # How to Use
 In order to use these cheatsheets, the cheatsheets in this repository need to go into ```~/.cheat/``` directory. For instance after the files are moved into that directory,
 ```cheat Scanning``` will display the **Scanning module** cheatsheet.
+
+# Screen Shots
+![Screenshot](1.png)
+
+![Screenshot](2.png)
+
+![Screenshot](3.png)
+
+![Screenshot](4.png)
