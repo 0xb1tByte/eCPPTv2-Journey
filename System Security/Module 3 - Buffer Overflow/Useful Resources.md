@@ -6,6 +6,9 @@
 - [The Buffer Overflow hands-on tutorial using C programming language)](https://www.tenouk.com/cncplusplusbufferoverflow.html)
 - [Win32 Exploitation with mona.py – Getting Set Up (Part I)](https://wmsmartt.wordpress.com/2011/11/08/win32-exploitation-with-mona-py-getting-set-up-part-i/)
 - [Win32 Exploitation with mona.py – Part II (Configuration and Basics)](https://wmsmartt.wordpress.com/2011/11/09/win32-exploitation-with-mona-py-part-ii-configuration-and-basics/)
+- [Function Calls, Part 1 (the Basics)](https://www.codeguru.com/cpp/cpp/cpp_mfc/functions/article.php/c14641/Function-Calls-Part-1-the-Basics.htm)
+- [Function Calls, Part 2 (Stack and Calling Conventions)](https://www.codeguru.com/cpp/cpp/cpp_mfc/functions/article.php/c14681/Function-Calls-Part-2-Stack-and-Calling-Conventions.htm)
+- [Function Calls, Part 3 (Frame Pointer and Local Variables)](https://www.codeguru.com/cpp/v-s/debug/openfaq/article.php/c14799/Function-Calls-Part-3-Frame-Pointer-and-Local-Variables.htm)
 
 ## Courses :arrow_forward:
 - [CNIT 127: Exploit Development](https://samsclass.info/127/127_F18.shtml)
