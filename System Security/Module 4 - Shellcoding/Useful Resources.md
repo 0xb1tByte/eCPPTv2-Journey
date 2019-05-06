@@ -1,6 +1,7 @@
 ## Articles :book:
 ### English Resources 
 - [What is a DLL?](https://support.microsoft.com/en-gb/help/815065/what-is-a-dll)
+- [Shellcoding for Linux and Windows Tutorial](http://www.vividmachines.com/shellcode/shellcode.html)
 
 ### مصادر عربية
 - [ما المقصود بمكتبة الارتباطات الديناميكية؟](https://support.microsoft.com/ar-sa/help/815065/what-is-a-dll)
