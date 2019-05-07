@@ -9,6 +9,8 @@
 - [Function Calls, Part 1 (the Basics)](https://www.codeguru.com/cpp/cpp/cpp_mfc/functions/article.php/c14641/Function-Calls-Part-1-the-Basics.htm)
 - [Function Calls, Part 2 (Stack and Calling Conventions)](https://www.codeguru.com/cpp/cpp/cpp_mfc/functions/article.php/c14681/Function-Calls-Part-2-Stack-and-Calling-Conventions.htm)
 - [Function Calls, Part 3 (Frame Pointer and Local Variables)](https://www.codeguru.com/cpp/v-s/debug/openfaq/article.php/c14799/Function-Calls-Part-3-Frame-Pointer-and-Local-Variables.htm)
+- [Configure Windows Defender Exploit protection in Windows 10](https://www.ghacks.net/2017/10/25/configure-windows-defender-exploit-guard-in-windows-10/)
+- [Customize exploit protection](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-exploit-guard/customize-exploit-protection#cmdlets-table)
 
 ## Courses :arrow_forward:
 - [CNIT 127: Exploit Development](https://samsclass.info/127/127_F18.shtml)
