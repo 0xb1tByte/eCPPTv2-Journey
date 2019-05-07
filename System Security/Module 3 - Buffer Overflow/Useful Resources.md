@@ -12,5 +12,10 @@
 - [Configure Windows Defender Exploit protection in Windows 10](https://www.ghacks.net/2017/10/25/configure-windows-defender-exploit-guard-in-windows-10/)
 - [Customize exploit protection](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-exploit-guard/customize-exploit-protection#cmdlets-table)
 
+
+## Tools  :wrench:
+- [PESecurity](https://github.com/NetSPI/PESecurity)
+
+
 ## Courses :arrow_forward:
 - [CNIT 127: Exploit Development](https://samsclass.info/127/127_F18.shtml)
