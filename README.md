@@ -20,15 +20,15 @@ This repository is intended just for supporting & helping me :eyes: during my eC
 * [x] Module 3 : Enumeration
 * [x] Module 4 : Sniffing & MITM 
 * [x] Module 5 : Vulnerability Assessment & Exploitation 
-* [ ] Module 6 : Post Exploitation :pushpin:
-* [ ] Module 7 : Anonymity
-* [ ] Module 8 : Social Engineering
+* [x] Module 6 : Post Exploitation 
+* [x] Module 7 : Anonymity
+* [x] Module 8 : Social Engineering
 
 
  **Section: Linux Exploitation**
-* [ ] Module 1 : Introduction
-* [ ] Module 2 : Information Gathering
-* [ ] Module 3 : Exploitation Over the Network
+* [x] Module 1 : Introduction
+* [x] Module 2 : Information Gathering
+* [ ] Module 3 : Exploitation Over the Network :pushpin:
 * [ ] Module 4 : Post Exploitation
 
 
