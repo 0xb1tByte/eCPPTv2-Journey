@@ -28,8 +28,8 @@ This repository is intended just for supporting & helping me :eyes: during my eC
  **Section: Linux Exploitation**
 * [x] Module 1 : Introduction
 * [x] Module 2 : Information Gathering
-* [ ] Module 3 : Exploitation Over the Network :pushpin:
-* [ ] Module 4 : Post Exploitation
+* [x] Module 3 : Exploitation Over the Network 
+* [ ] Module 4 : Post Exploitation :pushpin:
 
 
  **Section: Web Application Security**
