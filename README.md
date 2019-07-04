@@ -29,12 +29,12 @@ This repository is intended just for supporting & helping me :eyes: during my eC
 * [x] Module 1 : Introduction
 * [x] Module 2 : Information Gathering
 * [x] Module 3 : Exploitation Over the Network 
-* [ ] Module 4 : Post Exploitation :pushpin:
+* [x] Module 4 : Post Exploitation 
 
 
  **Section: Web Application Security**
 * [x] Module 1 : Introduction
-* [ ] Module 2 : Information Gathering
+* [ ] Module 2 : Information Gathering :pushpin:
 * [ ] Module 3 : Cross site scripting
 * [ ] Module 4 : SQL Injection
 * [ ] Module 5 : Other Common Web Attacks
