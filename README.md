@@ -34,8 +34,8 @@ This repository is intended just for supporting & helping me :eyes: during my eC
 
  **Section: Web Application Security**
 * [x] Module 1 : Introduction
-* [ ] Module 2 : Information Gathering :pushpin:
-* [ ] Module 3 : Cross site scripting
+* [x] Module 2 : Information Gathering 
+* [ ] Module 3 : Cross site scripting :pushpin:
 * [ ] Module 4 : SQL Injection
 * [ ] Module 5 : Other Common Web Attacks
     
