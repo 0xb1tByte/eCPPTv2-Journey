@@ -6,6 +6,8 @@
 ### مصادر عربية
 - [ما المقصود بمكتبة الارتباطات الديناميكية؟](https://support.microsoft.com/ar-sa/help/815065/what-is-a-dll)
 - [dll شرح توضيحي ومفصل عن](https://www.kutub.info/library/book/19855)
+- [تحويل الـ Shellcode من Hex إلى Binary و العكس](http://security4arabs.com/2011/01/14/convert-hexshellcode-to-bin-binaryshellcode-to-hex/)
+- [إيجاد الـ Bad Characters في الـ Shellcode](http://security4arabs.com/2011/01/12/how-to-find-bad-characters-restriction-in-shellcode/)
 
 
 ## Tools  :wrench:
