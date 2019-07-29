@@ -1,5 +1,5 @@
 ## Articles :book:
-
+### English Resources 
 - [CPU Rings, Privilege, and Protection](https://manybutfinite.com/post/cpu-rings-privilege-and-protection/)
 - [Anatomy of a Program in Memory](https://manybutfinite.com/post/anatomy-of-a-program-in-memory/)
 - [Journey to the Stack, Part I](https://manybutfinite.com/post/journey-to-the-stack/)
@@ -11,7 +11,6 @@
 - [Function Calls, Part 3 (Frame Pointer and Local Variables)](https://www.codeguru.com/cpp/v-s/debug/openfaq/article.php/c14799/Function-Calls-Part-3-Frame-Pointer-and-Local-Variables.htm)
 - [Configure Windows Defender Exploit protection in Windows 10](https://www.ghacks.net/2017/10/25/configure-windows-defender-exploit-guard-in-windows-10/)
 - [Customize exploit protection](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-exploit-guard/customize-exploit-protection#cmdlets-table)
-
 
 ## Tools  :wrench:
 - [PESecurity](https://github.com/NetSPI/PESecurity)
