@@ -11,6 +11,8 @@
 - [Function Calls, Part 3 (Frame Pointer and Local Variables)](https://www.codeguru.com/cpp/v-s/debug/openfaq/article.php/c14799/Function-Calls-Part-3-Frame-Pointer-and-Local-Variables.htm)
 - [Configure Windows Defender Exploit protection in Windows 10](https://www.ghacks.net/2017/10/25/configure-windows-defender-exploit-guard-in-windows-10/)
 - [Customize exploit protection](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-exploit-guard/customize-exploit-protection#cmdlets-table)
+- [Writing Exploits for Win32 Systems from Scratch](https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/)
+- [ Buffer Overflows in C ](https://users.cs.jmu.edu/bernstdh/web/common/lectures/summary_vulnerabilities_c_buffer-overflows.php)
 
 ## Tools  :wrench:
 - [PESecurity](https://github.com/NetSPI/PESecurity)
