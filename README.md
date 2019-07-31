@@ -1,6 +1,6 @@
 # eCPPTv2-Journey
 
-This repository is intended just for supporting & helping me :eyes: during my eCPPTv2 journey from [eLearnSecurity](https://www.elearnsecurity.com/course/penetration_testing/)
+This repository is intended just for supporting & helping me during my eCPPTv2 journey from [eLearnSecurity](https://www.elearnsecurity.com/course/penetration_testing/)
 
 
 ## Course content
