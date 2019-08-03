@@ -1,5 +1,5 @@
 """
-pythoNMAP : a simple script that automates some of nmap scanning options
+pythoNMAP : simple script that automates some of nmap scanning options
 Version : 1.0
 Pyhton Version : 3.7
 License : GNU LESSER GENERAL PUBLIC LICENSE Version 3
