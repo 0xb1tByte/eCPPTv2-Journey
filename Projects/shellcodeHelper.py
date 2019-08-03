@@ -1,5 +1,5 @@
 """
-shellcodeHelper : a simple script to help you during shellcode development
+shellcodeHelper : simple script to help you during shellcode development
 Version : 1.0
 Pyhton Version : 2.7
 Platform : Windows
